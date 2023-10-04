@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+    <form method="post", action="{% url 'all_posts' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit", value="Filter">
+    </form>
+
+    {% if title != 'All posts' %}
+        <p><a href="{% url 'all_posts' %}">All posts</a></p>
+    {% endif %}
+
+    {% for post in posts %}
+        <div>
+            <p>{{ post.user.username }}</p>
+            <p>{{ post.title }}</p>
+            <p>{{ post.content }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+</body>
+</html>
