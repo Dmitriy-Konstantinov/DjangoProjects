@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% for item in users %}
+        <a href="{% url 'user_info' item.id %}">{{ item }}</a>
+        <hr>
+    {% endfor %}
+</body>
+</html>

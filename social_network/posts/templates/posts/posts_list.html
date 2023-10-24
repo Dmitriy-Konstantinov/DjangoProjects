@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+    <form method="post", action="{% url 'all_posts' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit", value="Filter">
+    </form> <br>
+
+    {% if title != 'All posts' %}
+        <p>
+            <a href="{% url 'all_posts' %}">All posts</a>
+        </p>
+    {% endif %}
+
+    <a href="{% url 'new_post' %}">Add new post <br> </a> <br>
+
+    {% for item in posts %}
+        <div>{{ item.user_id.name }} {{ item.user_id.surname }}</div>
+        <div>{{ item.title }}</div>
+        <div>{{ item.text }}</div>
+
+        <form method="post" action="{% url 'comments' item.id %}">
+            {% csrf_token %}
+            <input type="submit" value="View сomments">
+        </form>
+
+        <hr>
+    {% endfor %}
+</body>
+</html>

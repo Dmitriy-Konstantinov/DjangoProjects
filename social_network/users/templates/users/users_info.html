@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div>Name: {{ profile.name }}</div>
+    <div>Surname: {{ profile.surname }}</div>
+    <div>E-mail: {{ profile.email }}</div>
+    <div>City: {{ profile.city }}</div>
+    <div>Age: {{ profile.age }}</div> <br>
+    <a href="{% url 'posts_by_user' profile.id %}">View user`s posts</a>
+</body>
+</html>
